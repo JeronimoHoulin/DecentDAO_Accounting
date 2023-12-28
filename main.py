@@ -1,44 +1,102 @@
 import os
 from dotenv import load_dotenv
-from web3 import Web3
+import requests
+from datetime import datetime
 
 #Connecting to ENV file
 os.chdir('C:/Users/jeron/OneDrive/Desktop/Inter/DecentDAO/DecentDAO_Accounting') #Your CWD
 load_dotenv()
 
-CHAINSTACK_HTTPS_PROVIDER = os.environ.get('CHAINSTACK_HTTPS_PROVIDER')
+chain = input("What chain would you like to have the accounting done for (Eth or Gnosis) ?")
+init_bal = float(input("What is the initial balance in USDC for the Treasury ?"))
 
-#Creating Web3 instance
-w3 = Web3(Web3.HTTPProvider(CHAINSTACK_HTTPS_PROVIDER))
+decent_adrs = '0xD26c85D435F02DaB8B220cd4D2d398f6f646e235'
 
-if w3.eth.chain_id == 100:
-    print("Connected to Gnosis chain!")
-
-    decent_addrs = '0xd26c85d435f02dab8b220cd4d2d398f6f646e235'[2:].lower() #Skip over 0x to check input data.
-    current_block = 31282934 # w3.eth.block_number => if you need to monitor latest txns.
-    untill_block = 31224790 #Block height from two months back.
-
-    for height in reversed(range(untill_block, current_block)):
-        block = w3.eth.get_block(height, True)
-
-        """   DOES NOT WORK !   """
-        #if transaction['to'] == decent_addrs or transaction['from'] == decent_addrs:
-
-        for txn in block.transactions:
-            if decent_addrs in str(txn['input'].hex()):
-                print()
-                print("Found a Gnosis Safe transaction from the address.")
-                print(txn)
-
-
-
-
-
-
-
-
-
-
+if chain.lower() == 'eth':
+    credential = 'ETHERSCAN_API_KEY'
+    base_url = "http://api.etherscan.io"
+    start_block = 18472175
 else:
-    print("Failed to connect to Gnosis chain.")
+    credential = 'GNOSISSCAN_API_KEY'
+    base_url = "https://api.gnosisscan.io"
+    start_block = 31224790
 
+
+api_key =  os.environ.get(credential)
+
+
+response = requests.get(f"{base_url}/api?module=proxy&action=eth_blockNumber&apikey={api_key}").json()
+block_height = int(response['result'], 16)
+
+
+print("Fetching all ERC-20 token transactions from the Decent DAO Treasury for the last 2 Months...")
+print()
+response = requests.get(
+    f"{base_url}/api",
+    params={
+        "module": "account",
+        "action": "tokentx",
+        "address": decent_adrs,
+        "sort": "asc",
+        "startblock":start_block,
+        "endblock":block_height, #two months back untill today...
+        "apikey": api_key,
+    },
+).json()
+
+
+
+with open("ledger.txt", "a", encoding="utf-8") as ledger:
+
+    ledger.write("; -*- ledger -*-\n")
+    ledger.write("2023/12/01 * Initial Treasury Balance\n")
+    ledger.write(f"  Assets:Treasury:USDC                      ${f'{round(init_bal, 1):,}'}\n")
+    ledger.write("  Equity:SeriesA\n\n\n")
+
+
+    for txn in response['result']:
+
+        date = datetime.fromtimestamp(int(txn['timeStamp'])).strftime("%Y/%m/%d")
+        value = round(int(txn['value']) / 10 ** int(txn['tokenDecimal']), 2)
+
+        token = txn['tokenName']
+
+        txn_fee = round(int(txn['gasPrice']) * int(txn['gasUsed']) / 10**18, 10)
+
+        if txn['from'] == decent_adrs.lower():
+
+            txn_type = "Output"
+            to_adrs = f"Providers: {txn['from'][:5]}...{txn['from'][38:]}"
+
+            if value > 1000:
+                ledger.write(f"{date} Payroll\n")
+                ledger.write(f"   Expenses:Payroll   ${f'{value:,}'}\n")
+            elif value > 500:
+                ledger.write(F"{date} Providers\n")
+                ledger.write(f"   Expenses:{to_adrs}   ${f'{value:,}'}\n")
+            elif value < 500:
+                ledger.write(F"{date} Other Expenses\n")
+                ledger.write(f"   Expenses:Deductible Business Exp.   ${f'{value:,}'}\n")
+            ledger.write(f"   Assets:Treasury:{token}   -${f'{value:,}'}\n\n\n")
+
+
+        else:
+            txn_type = "Input"
+            from_adrs = f"Client {txn['from'][:5]}"
+
+            if value > 100:
+                ledger.write(f"{date} Financial Service Fees\n")
+                ledger.write(f"   Assets:Treasury:{token}   ${f'{value:,}'}\n")
+                ledger.write(f"   Invoices:{from_adrs}   -${f'{value:,}'}\n\n\n")
+            else:
+                ledger.write(f"{date} Unknown Input Trxn\n")
+                ledger.write(f"   Assets:Treasury:{token}   ${f'{value:,}'}\n")
+                ledger.write(f"   Invoices:{from_adrs}   -${f'{value:,}'}\n\n\n")
+
+
+print("Writing all txns into a ledger.txt file...")
+print()
+print("Done !")
+print("Run comands:\n ledger -f gnosis_ledger.txt balances -> Checking final balances.")
+print("\n ledger -f gnosis_ledger.txt XXX -> Checking XXX.")
+ledger.close()
