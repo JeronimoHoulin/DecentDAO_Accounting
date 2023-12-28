@@ -1,0 +1,31 @@
+; -*- ledger -*-
+2023/12/01 * Initial Treasury Balance
+  Assets:Treasury:USDC                      $100,000.0
+  Equity:SeriesA
+
+
+2023/12/01 Financial Service Fees
+   Assets:Treasury:SHIBSWAP˳ORG   $2,500,000.0
+   Invoices:Client 0x000   -$2,500,000.0
+
+
+2023/12/03 Financial Service Fees
+   Assets:Treasury:SWAP-SHIB˳ORG   $2,500,000.0
+   Invoices:Client 0x000   -$2,500,000.0
+
+
+2023/12/03 Financial Service Fees
+   Assets:Treasury:USD-SWAP˳COM   $1,000.0
+   Invoices:Client 0xdda   -$1,000.0
+
+
+2023/12/04 Financial Service Fees
+   Assets:Treasury:USDTGIVEAWAYS˳COM   $10,000.0
+   Invoices:Client 0x000   -$10,000.0
+
+
+2023/12/05 Unknown Input Trxn
+   Assets:Treasury:USDC-SWAP˳XYZ   $73.0
+   Invoices:Client 0x000   -$73.0
+
+
