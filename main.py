@@ -15,11 +15,11 @@ decent_adrs = '0xD26c85D435F02DaB8B220cd4D2d398f6f646e235'
 if chain.lower() == 'eth':
     credential = 'ETHERSCAN_API_KEY'
     base_url = "http://api.etherscan.io"
-    start_block = 18472175
+    start_block = 18472175 #2 months back
 else:
     credential = 'GNOSISSCAN_API_KEY'
     base_url = "https://api.gnosisscan.io"
-    start_block = 31224790
+    start_block = 31224790 #2 months back
 
 
 api_key =  os.environ.get(credential)
@@ -61,6 +61,11 @@ with open("ledger.txt", "a", encoding="utf-8") as ledger:
 
         token = txn['tokenName']
 
+        if "USDC" in token or "USD" in token:
+            token = "USDC"
+        else:
+            token = "USDT"
+
         txn_fee = round(int(txn['gasPrice']) * int(txn['gasUsed']) / 10**18, 10)
 
         if txn['from'] == decent_adrs.lower():
@@ -82,9 +87,9 @@ with open("ledger.txt", "a", encoding="utf-8") as ledger:
 
         else:
             txn_type = "Input"
-            from_adrs = f"Client {txn['from'][:5]}"
+            from_adrs = f"Client {txn['from'][:5]}...{txn['from'][38:]}"
 
-            if value > 100:
+            if value > 50:
                 ledger.write(f"{date} Financial Service Fees\n")
                 ledger.write(f"   Assets:Treasury:{token}   ${f'{value:,}'}\n")
                 ledger.write(f"   Invoices:{from_adrs}   -${f'{value:,}'}\n\n\n")
@@ -97,6 +102,8 @@ with open("ledger.txt", "a", encoding="utf-8") as ledger:
 print("Writing all txns into a ledger.txt file...")
 print()
 print("Done !")
-print("Run comands:\n ledger -f gnosis_ledger.txt balances -> Checking final balances.")
-print("\n ledger -f gnosis_ledger.txt XXX -> Checking XXX.")
+print("Run comands:\n")
+print("     ledger -f ledger.txt balance -> Checking final balances.\n")
+print("     ledger -w -f ledger.txt bal ^Assets ^Expenses ^Invoices -> Checking balances of specific accounts.\n")
+print("     ledger r -M -f ledger.txt -- period-sort total Expenses:Payroll -> Checking Payroll.")
 ledger.close()
