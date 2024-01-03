@@ -1,0 +1,255 @@
+; -*- ledger -*-
+2023/12/01 * Treasury Balance
+  Assets:Treasury:USDC                      $1,839,070
+  Assets:Treasury:PAX                       $2,315,692
+  Assets:Treasury:DAI                       $823,409
+  Assets:Treasury:WBTC:6.954                $313,729
+  Assets:Treasury:USDT                      $88,231
+  Equity:InitialBalance
+
+
+2023/11/03 Payroll
+   Expenses:Payroll   $8,093.14
+   Assets:Treasury:USDC   -$8,093.14
+
+
+2023/11/03 Payroll
+   Expenses:Payroll   $7,671.23
+   Assets:Treasury:USDC   -$7,671.23
+
+
+2023/11/03 Payroll
+   Expenses:Payroll   $5,983.56
+   Assets:Treasury:USDC   -$5,983.56
+
+
+2023/11/03 Payroll
+   Expenses:Payroll   $3,643.83
+   Assets:Treasury:USDC   -$3,643.83
+
+
+2023/11/03 Payroll
+   Expenses:Payroll   $5,907.0
+   Assets:Treasury:USDC   -$5,907.0
+
+
+2023/11/03 Payroll
+   Expenses:Payroll   $4,794.52
+   Assets:Treasury:USDC   -$4,794.52
+
+
+2023/11/03 Payroll
+   Expenses:Payroll   $6,521.0
+   Assets:Treasury:USDC   -$6,521.0
+
+
+2023/11/03 Payroll
+   Expenses:Payroll   $2,301.37
+   Assets:Treasury:USDC   -$2,301.37
+
+
+2023/11/03 Payroll
+   Expenses:Payroll   $10,000.0
+   Assets:Treasury:USDC   -$10,000.0
+
+
+2023/11/03 Other Expenses
+   Expenses:Deductible Business Exp.   $180.0
+   Assets:Treasury:USDC   -$180.0
+
+
+2023/11/03 Providers
+   Expenses:Providers: 0xd26...e235   $1,000.0
+   Assets:Treasury:USDC   -$1,000.0
+
+
+2023/11/03 Other Expenses
+   Expenses:Deductible Business Exp.   $292.5
+   Assets:Treasury:USDC   -$292.5
+
+
+2023/11/03 Payroll
+   Expenses:Payroll   $10,000.0
+   Assets:Treasury:USDC   -$10,000.0
+
+
+2023/11/03 Payroll
+   Expenses:Payroll   $1,200.0
+   Assets:Treasury:USDC   -$1,200.0
+
+
+2023/11/03 Providers
+   Expenses:Providers: 0xd26...e235   $799.79
+   Assets:Treasury:USDC   -$799.79
+
+
+2023/11/03 Payroll
+   Expenses:Payroll   $12,772.59
+   Assets:Treasury:USDC   -$12,772.59
+
+
+2023/11/03 Payroll
+   Expenses:Payroll   $6,520.0
+   Assets:Treasury:USDC   -$6,520.0
+
+
+2023/11/03 Payroll
+   Expenses:Payroll   $5,907.0
+   Assets:Treasury:USDC   -$5,907.0
+
+
+2023/11/03 Payroll
+   Expenses:Payroll   $6,904.1
+   Assets:Treasury:USDC   -$6,904.1
+
+
+2023/11/03 Payroll
+   Expenses:Payroll   $11,603.73
+   Assets:Treasury:USDC   -$11,603.73
+
+
+2023/11/03 Payroll
+   Expenses:Payroll   $5,907.0
+   Assets:Treasury:USDC   -$5,907.0
+
+
+2023/11/03 Payroll
+   Expenses:Payroll   $5,830.0
+   Assets:Treasury:USDC   -$5,830.0
+
+
+2023/11/03 Payroll
+   Expenses:Payroll   $5,907.0
+   Assets:Treasury:USDC   -$5,907.0
+
+
+2023/11/03 Payroll
+   Expenses:Payroll   $5,370.0
+   Assets:Treasury:USDC   -$5,370.0
+
+
+2023/11/03 Payroll
+   Expenses:Payroll   $6,712.33
+   Assets:Treasury:USDC   -$6,712.33
+
+
+2023/11/03 Other Expenses
+   Expenses:Deductible Business Exp.   $60.0
+   Assets:Treasury:USDC   -$60.0
+
+
+2023/11/17 Payroll
+   Expenses:Payroll   $5,000.0
+   Assets:Treasury:USDC   -$5,000.0
+
+
+2023/11/17 Payroll
+   Expenses:Payroll   $118,349.1
+   Assets:Treasury:USDC   -$118,349.1
+
+
+2023/11/17 Payroll
+   Expenses:Payroll   $15,857.2
+   Assets:Treasury:USDC   -$15,857.2
+
+
+2023/11/30 Payroll
+   Expenses:Payroll   $12,772.59
+   Assets:Treasury:USDC   -$12,772.59
+
+
+2023/12/01 Payroll
+   Expenses:Payroll   $118,349.1
+   Assets:Treasury:USDC   -$118,349.1
+
+
+2023/12/01 Payroll
+   Expenses:Payroll   $9,992.01
+   Assets:Treasury:USDC   -$9,992.01
+
+
+2023/12/01 Payroll
+   Expenses:Payroll   $10,000.0
+   Assets:Treasury:USDC   -$10,000.0
+
+
+2023/12/01 Payroll
+   Expenses:Payroll   $1,200.0
+   Assets:Treasury:USDC   -$1,200.0
+
+
+2023/12/01 Payroll
+   Expenses:Payroll   $10,000.0
+   Assets:Treasury:USDC   -$10,000.0
+
+
+2023/12/15 Payroll
+   Expenses:Payroll   $1,718.3
+   Assets:Treasury:USDC   -$1,718.3
+
+
+2023/12/15 Payroll
+   Expenses:Payroll   $12,744.0
+   Assets:Treasury:USDC   -$12,744.0
+
+
+2023/12/15 Payroll
+   Expenses:Payroll   $118,349.1
+   Assets:Treasury:USDC   -$118,349.1
+
+
+2023/12/15 Payroll
+   Expenses:Payroll   $127,359.8
+   Assets:Treasury:USDC   -$127,359.8
+
+
+2023/12/15 Other Expenses
+   Expenses:Deductible Business Exp.   $200.0
+   Assets:Treasury:USDC   -$200.0
+
+
+2023/12/15 Other Expenses
+   Expenses:Deductible Business Exp.   $200.0
+   Assets:Treasury:USDC   -$200.0
+
+
+2023/12/15 Other Expenses
+   Expenses:Deductible Business Exp.   $0.0
+   Assets:Treasury:USDC   -$0.0
+
+
+2023/12/15 Other Expenses
+   Expenses:Deductible Business Exp.   $200.0
+   Assets:Treasury:USDC   -$200.0
+
+
+2023/12/21 Providers
+   Expenses:Providers: 0xd26...e235   $1,000.0
+   Assets:Treasury:USDC   -$1,000.0
+
+
+2023/12/21 Other Expenses
+   Expenses:Deductible Business Exp.   $200.0
+   Assets:Treasury:USDC   -$200.0
+
+
+2023/12/21 Other Expenses
+   Expenses:Deductible Business Exp.   $200.0
+   Assets:Treasury:USDC   -$200.0
+
+
+2023/12/21 Other Expenses
+   Expenses:Deductible Business Exp.   $200.0
+   Assets:Treasury:USDC   -$200.0
+
+
+2023/12/21 Payroll
+   Expenses:Payroll   $7,286.18
+   Assets:Treasury:USDC   -$7,286.18
+
+
+2023/12/21 Payroll
+   Expenses:Payroll   $28,311.42
+   Assets:Treasury:USDC   -$28,311.42
+
+
